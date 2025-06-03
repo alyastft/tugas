@@ -4,7 +4,7 @@ import streamlit as st
 st.sidebar.title("Navigation")
 page = st.sidebar.selectbox("Select a page:", ["Data Description", "Prediction", "About Naive Bayes"])
 # Page 1: Data description
-if page == "Data description":
+if page == "Data Description":
     st.title("Data Description")
     
     # Input for name

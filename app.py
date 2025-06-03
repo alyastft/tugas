@@ -2,8 +2,7 @@ import streamlit as st
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Data description", "Prediction", "About Naive Bayes"])
-
+page = st.sidebar.selectbox("Select a page:", ["Data Description", "Prediction", "About Naive Bayes"])
 # Page 1: Data description
 if page == "Data description":
     st.title("Data Description")

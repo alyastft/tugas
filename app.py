@@ -22,7 +22,7 @@ if page == "Data description":
 # Page 2: Prediction
 elif page == "Prediction":
     st.title("Prediction")
-    st.write("This is the prediction page. (Model implementation goes here.)")
+    st.write("This is the prediction page")
 
 # Page 3: About Naive Bayes
 elif page == "About Naive Bayes":

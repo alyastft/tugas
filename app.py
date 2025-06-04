@@ -23,23 +23,32 @@ if page == "Data Description":
 # Page 2: Prediction
 elif page == "Prediction":
     model = joblib.load('naive_bayes_model.pkl')
-    st.title("Prediksi Jenis Bunga Iris 🌸")
-    st.write("Masukkan data yang akan diprediksi:")
+    st.title("Prediksi Kelangsungan Hidup Penumpang Titanic 🚢")
+st.write("Masukkan data penumpang di bawah ini:")
 
-    # Input fitur dari pengguna
-    seplen = st.number_input("Sepal Length", min_value=0.0, max_value=10.0, value=2.0)
-    sepwid = st.number_input("Sepal Width", min_value=0.0, max_value=10.0, value=2.0)
-    petlen = st.number_input("Petal Length", min_value=0.0, max_value=10.0, value=2.0)
-    petwid = st.number_input("Petal Width", min_value=0.0, max_value=10.0, value=2.0)
+# Input fitur
+pclass = st.selectbox("Kelas Tiket (Pclass)", [1, 2, 3])
+sex = st.selectbox("Jenis Kelamin", ["male", "female"])
+age = st.slider("Usia", 0, 100, 25)
+sibsp = st.number_input("Jumlah Saudara/Partner di kapal (SibSp)", min_value=0, step=1)
+parch = st.number_input("Jumlah Orang Tua/Anak di kapal (Parch)", min_value=0, step=1)
+fare = st.number_input("Tarif Tiket (Fare)", min_value=0.0, step=1.0)
 
-    # Prediksi saat tombol ditekan
-    if st.button("Prediksi"):
-    # input_data = pd.DataFrame([[seplen, sepwid, petlen, petwid]],columns=["sepal.length", "sepal.width", "petal.length", "petal.width"])
+# Encode jenis kelamin
+sex_encoded = 1 if sex == "male" else 0
+
+# Prediksi saat tombol ditekan
+if st.button("Prediksi"):
+    input_data = pd.DataFrame([[pclass, sex_encoded, age, sibsp, parch, fare]],
+                              columns=["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare"])
+    
+    st.subheader("Data Input:")
     st.dataframe(input_data)
 
     hasil = model.predict(input_data)
-    st.success(f"Hasil Prediksi: {hasil[0]}")
+    label = "Selamat" if hasil[0] == 1 else "Tidak Selamat"
 
+    st.success(f"Hasil Prediksi: {label}")
 # Page 3: About Naive Bayes
 elif page == "About Naive Bayes":
     st.title("About Naive Bayes")

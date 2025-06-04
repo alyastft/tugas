@@ -34,8 +34,7 @@ elif page == "Prediction":
 
     # Prediksi saat tombol ditekan
     if st.button("Prediksi"):
-    # input_data = pd.DataFrame([[seplen, sepwid, petlen, petwid]],
-                              columns=["sepal.length", "sepal.width", "petal.length", "petal.width"])
+    # input_data = pd.DataFrame([[seplen, sepwid, petlen, petwid]],columns=["sepal.length", "sepal.width", "petal.length", "petal.width"])
     st.dataframe(input_data)
 
     hasil = model.predict(input_data)

@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import joblib
 
 # Sidebar navigation
 st.sidebar.title("Navigation")
@@ -20,6 +22,7 @@ if page == "Data Description":
 
 # Page 2: Prediction
 elif page == "Prediction":
+    model = joblib.load('naive_bayes_model.pkl')
     st.title("Prediksi Jenis Bunga Iris 🌸")
     st.write("Masukkan data yang akan diprediksi:")
 
